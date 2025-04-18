@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, Menu } from 'lucide-react';
 import header from './headerData';
-import './Header.css';
+import './header.css';
 
 const Header = () => {
   const [selectedLink, setSelectedLink] = useState('');
