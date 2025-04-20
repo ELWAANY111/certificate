@@ -1,0 +1,399 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === FIX MOBILE HORIZONTAL SCROLL ISSUE === */
+html, body {
+  overflow-x: hidden;
+  font-family: 'Cairo', 'Traditional Arabic', Arial, sans-serif;
+}
+
+.certificate-container,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Certificate Container */
+.certificate-container {
+  width: 100%;
+  padding: 0;
+  background-color: #f3f4f4; 
+  position: relative;
+  font-family: 'Cairo', 'Traditional Arabic', Arial, sans-serif;
+}
+
+/* Font Styles */
+.form-field label {
+  font-family: 'Cairo', 'Traditional Arabic', Arial, sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+.form-input {
+  font-family: 'Tajawal', Arial, sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Header Section */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+footer img {
+  width: 100%;
+}
+
+.logo-group {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.balady-footer {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  color: black;
+  background-color: white;
+  padding: 20px 0;
+  margin-top: auto; 
+}
+
+.certificate-title {
+  background-color: #129797; 
+  color: #ffffff;           
+  text-align: center;       
+  padding: 15px;             
+  font-size: 40px;           
+  font-family: "Cairo", "Traditional Arabic", Arial, sans-serif;
+  font-weight: 600;         
+  width: 40%;
+  display: block;
+  margin-left: auto;     
+}
+
+/* Content Layout */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.certificate-name {
+  color: #129797; 
+  font-size: 2rem;
+ word-spacing: 5px;
+  text-align: right;
+  margin: 0 5px 0 0;
+  font-weight: bold;
+  white-space: nowrap;
+  font-family: "Cairo", "Traditional Arabic", Arial, sans-serif;
+}
+
+/* Form Grid - 2 columns */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.form-field {
+  margin-bottom: 0;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.form-input {
+  padding: 3px;
+  background-color: #f7fafc;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: rgb(255, 255, 255);
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 2px;
+}
+
+.image-wrapper { 
+  border: 1.55px solid #67c61a8e;
+  padding: 3px;
+  background-color: #f3f4f4;
+  width: 100%;
+  min-width: 160px;
+  max-width: 162px;
+}
+
+.certificate-image {
+  min-height: 140px;
+  min-width: 150px;
+}
+
+.qr-image {
+  min-height: 140px;
+  width: auto;
+}
+
+.qr-wrapper {
+  border: 1.55px solid #67c61a8e;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  background-color: #f3f4f4;
+}
+
+/* Print Button */
+.print-button {
+  background-color: #34d399;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 15px auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 100px;
+  }
+
+  .certificate-title {
+    font-size: 1.3rem;
+    padding: 6px 12px;
+              
+
+  font-weight: 600;
+  }
+  
+  .certificate-name {
+    font-size: 1.3rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .qr-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: 20cm 16cm;
+    margin: 0;
+  }
+  #logoo{
+    border-right:solid 0.1px  rgb(182, 160, 160,0.3);  
+  }
+
+  .qr-container {
+    text-align: center;
+    justify-items: center;
+  }
+
+  .qr-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo, .authority-logo {
+    width: 95px;
+    height: auto;
+  }
+
+  .certificate-container {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .print-button {
+    display: none;
+  }
+
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 0px;
+  }
+
+  .content-container {
+    flex-direction: row;
+    padding: 10px 10px;
+    gap: 10px;
+  }
+
+  .form-container {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .right-column {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    justify-content: flex-start;
+    margin-top: -14px;          
+    transform: scale(1.1);      
+    transform-origin: top center;
+    margin-left: 9px;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 35px;
+  }
+
+  .certificate-name {
+    color: #109393; 
+    font-size: 1.6rem;
+    text-align: right;
+    margin: 0 20px 0 0;
+    font-weight: bold;
+    white-space: nowrap;
+   
+  }
+
+  .certificate-title { 
+    font-size: 1.9rem;
+    padding: 10px  21px 10px  10px ;
+    margin: 0;
+    width: auto;
+    background-color: #107777; 
+    color: #ffffff;           
+    text-align: center;  
+    height: 80px;
+    display:flex;
+    align-items:center;
+    font-weight:500;
+  }
+
+  .image-wrapper { 
+    border: 1.55px solid #67c61a8e;
+    padding: 3px;
+    background-color: #f3f4f4;
+    width: 100%;
+    min-width: 160px;
+    max-width: 162px;
+  }
+
+  .certificate-image {
+    min-height: 140px;
+    min-width: 150px;
+  }
+
+  .qr-image {
+    min-height: 140px;
+    width: auto;
+      filter: grayscale(100%) contrast(200%);
+  }
+
+  .qr-wrapper {
+    border: 1.55px solid #67c61a8e;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f4;
+    width: auto;
+  }
+
+  .form-field {
+    margin-bottom: 0;
+  }
+
+  .form-field label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: normal;
+    color: #2d3748;
+    font-size: 1.2rem;
+  }
+
+  .form-input {
+    padding: 3px;
+    background-color: #f7fafc;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: Bold;
+    background-color: rgb(255, 255, 255);
+  } 
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Error Styles */
+  .error-container {
+    text-align: center;
+    padding: 20px;
+    color: #e74c3c;
+  }
+
+  .not-found-container {
+    text-align: center;
+    padding: 20px;
+  }
+}
