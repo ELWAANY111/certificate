@@ -19,13 +19,14 @@ html, body {
 body {
   max-width: 100vw;
   overflow-x: hidden;
+
 }
 
-/* Certificate Container */
+
 .certificate-container {
   width: 100%;
   padding: 0;
-  background-color: #f3f4f4; 
+  background-color:rgb(243, 244, 244); 
   position: relative;
   font-family: 'Cairo', 'Traditional Arabic', Arial, sans-serif;
 }
@@ -97,7 +98,7 @@ footer img {
 }
 
 .certificate-name {
-  color: #129797; 
+ color:  #129797; 
   font-size: 2rem;
  word-spacing: 5px;
   text-align: right;
@@ -177,7 +178,7 @@ footer img {
 
 /* Print Button */
 .print-button {
-  background-color: #34d399;
+  background-color: #0b8357;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -397,3 +398,5 @@ footer img {
     padding: 20px;
   }
 }
+
+

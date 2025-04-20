@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import header from './headerData';
-import './header.css';
+import styles from './header.module.css'; // Changed to module.css import
 
 const Header = () => {
   const [selectedLink, setSelectedLink] = useState('');
@@ -13,10 +12,10 @@ const Header = () => {
 
   useEffect(() => {
     const handleDocumentClick = (event) => {
-      const headerLinks = document.querySelector('.header-links');
-      const dropdownWrapper = document.querySelector('.desktop-dropdown-wrapper');
-      const mobileMenu = document.querySelector('.mobile-menu-wrapper');
-      const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+      const headerLinks = document.querySelector(`.${styles['header-links']}`);
+      const dropdownWrapper = document.querySelector(`.${styles['desktop-dropdown-wrapper']}`);
+      const mobileMenu = document.querySelector(`.${styles['mobile-menu-wrapper']}`);
+      const mobileMenuIcon = document.querySelector(`.${styles['mobile-menu-icon']}`);
 
       if (
         openMenu &&
@@ -45,17 +44,17 @@ const Header = () => {
   }, [openMenu, openNav]);
 
   return (
-    <header className="header-container">
-      <div className="header-top">
+    <header className={styles['header-container']}>
+      <div className={styles['header-top']}>
         <a href="https://balady.gov.sa/ar">
-          <img src="/yvghwoyg.viu.png" className="logo" alt="Logo" />
+          <img src="/yvghwoyg.viu.png" className={styles.logo} alt="Logo" />
         </a>
 
-        <ul className="header-links">
+        <ul className={styles['header-links']}>
           {header.map((obj, index) => (
-            <li key={index} className="header-link-item">
+            <li key={index} className={styles['header-link-item']}>
               <h6
-                className="header-link"
+                className={styles['header-link']}
                 onClick={(e) => {
                   e.stopPropagation();
                   if (selectedLink === obj.mainheader && openMenu) {
@@ -70,7 +69,7 @@ const Header = () => {
                 {obj.mainheader}
                 <img
                   src="/hdigp2bg.kcq.png"
-                  className="chevron-icon"
+                  className={styles['chevron-icon']}
                   alt="Dropdown icon"
                 />
               </h6>
@@ -78,9 +77,9 @@ const Header = () => {
           ))}
         </ul>
 
-        <div className="mobile-menu-container">
+        <div className={styles['mobile-menu-container']}>
           <Menu
-            className="mobile-menu-icon"
+            className={styles['mobile-menu-icon']}
             onClick={(e) => {
               e.stopPropagation();
               setOpenNav(!openNav);
@@ -93,14 +92,14 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`mobile-menu-wrapper ${openNav ? 'open' : ''}`}
+        className={`${styles['mobile-menu-wrapper']} ${openNav ? styles.open : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <ul className="mobile-menu">
+        <ul className={styles['mobile-menu']}>
           {header.map((obj, index) => (
             <React.Fragment key={index}>
               <li
-                className="mobile-menu-item"
+                className={styles['mobile-menu-item']}
                 onClick={(e) => {
                   e.stopPropagation();
                   if (list === obj.mainheader && openList) {
@@ -115,26 +114,26 @@ const Header = () => {
                 {obj.mainheader}
                 <img
                   src="/hdigp2bg.kcq.png"
-                  className="mobile-chevron"
+                  className={styles['mobile-chevron']}
                   alt="Dropdown icon"
                 />
               </li>
 
               <div
-                className={`submenu-container ${openList && list === obj.mainheader ? 'open' : ''}`}
+                className={`${styles['submenu-container']} ${openList && list === obj.mainheader ? styles.open : ''}`}
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="submenu-content">
+                <div className={styles['submenu-content']}>
                   {obj.links.map((innerObj, i) => (
                     <div key={i}>
                       {innerObj.mainhead && (
-                        <h1 className="submenu-header">{innerObj.mainhead}</h1>
+                        <h1 className={styles['submenu-header']}>{innerObj.mainhead}</h1>
                       )}
                       {innerObj.subhead.map((head, j) => (
-                        <div key={j} className="submenu-item">
+                        <div key={j} className={styles['submenu-item']}>
                           <img
                             src="/ca3o400a.4rg.png"
-                            className="dropdown-dot"
+                            className={styles['dropdown-dot']}
                             alt="dot"
                           />
                           {head.url ? (
@@ -142,13 +141,13 @@ const Header = () => {
                               href={head.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="submenu-link"
+                              className={styles['submenu-link']}
                               onClick={(e) => e.stopPropagation()}
                             >
                               {head.label}
                             </a>
                           ) : (
-                            <span className="submenu-text">{head.label}</span>
+                            <span className={styles['submenu-text']}>{head.label}</span>
                           )}
                         </div>
                       ))}
@@ -163,29 +162,29 @@ const Header = () => {
 
       {/* Desktop Dropdown */}
       <div
-        className={`desktop-dropdown-wrapper ${openMenu ? 'open' : ''}`}
+        className={`${styles['desktop-dropdown-wrapper']} ${openMenu ? styles.open : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
         {openMenu && header.map((obj, index) =>
           obj.mainheader === selectedLink ? (
-            <div key={index} className="dropdown-content">
-              <div className="dropdown-columns">
+            <div key={index} className={styles['dropdown-content']}>
+              <div className={styles['dropdown-columns']}>
                 {obj.links.map((innerObj, i) => (
                   <div
                     key={i}
                     className={
                       obj.mainheader === 'المنصات' || obj.mainheader === 'تواصل معنا'
-                        ? 'special-drop'
-                        : 'dropdown-column'
+                        ? styles['special-drop']
+                        : styles['dropdown-column']
                     }
                   >
                     {innerObj.mainhead && (
-                      <h1 className="dropdown-header">{innerObj.mainhead}</h1>
+                      <h1 className={styles['dropdown-header']}>{innerObj.mainhead}</h1>
                     )}
                     {(obj.mainheader === 'الخدمات' && i === 1) && (
                       <a
                         target="_blank"
-                        className="bigserveice"
+                        className={styles.bigserveice}
                         rel="noopener noreferrer"
                         href="https://balady.gov.sa/ar/services"
                         onClick={(e) => e.stopPropagation()}
@@ -194,10 +193,10 @@ const Header = () => {
                       </a>
                     )}
                     {innerObj.subhead.map((head, j) => (
-                      <div key={j} className="submenu-item">
+                      <div key={j} className={styles['submenu-item']}>
                         <img
                           src="/ca3o400a.4rg.png"
-                          className="dropdown-dot"
+                          className={styles['dropdown-dot']}
                           alt="dot"
                         />
                         {head.url ? (
@@ -207,8 +206,8 @@ const Header = () => {
                             rel="noopener noreferrer"
                             className={
                               obj.mainheader === 'المنصات' || obj.mainheader === 'تواصل معنا'
-                                ? 'dropdown-header'
-                                : 'dropdown-link'
+                                ? styles['dropdown-header']
+                                : styles['dropdown-link']
                             }
                             style={
                               head.label === 'بلدي أعمال'
@@ -222,7 +221,7 @@ const Header = () => {
                             {head.label}
                             {head.label === 'بلدي أعمال' && (
                               <a
-                                className="newB"
+                                className={styles.newB}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href="https://ssoapp.balady.gov.sa/Account/Login?..."
@@ -233,7 +232,7 @@ const Header = () => {
                             )}
                             {head.label === 'لوحة التحكم' && (
                               <a
-                                className="newL"
+                                className={styles.newL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href="https://ssoapp.balady.gov.sa/Account/Login?..."
@@ -244,7 +243,7 @@ const Header = () => {
                             )}
                           </a>
                         ) : (
-                          <span className="dropdown-text">{head.label}</span>
+                          <span className={styles['dropdown-text']}>{head.label}</span>
                         )}
                       </div>
                     ))}
@@ -256,7 +255,7 @@ const Header = () => {
         )}
       </div>
 
-      <div className="header-white-tape"></div>
+      <div className={styles['header-white-tape']}></div>
     </header>
   );
 };
