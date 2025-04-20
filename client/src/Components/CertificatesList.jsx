@@ -7,7 +7,7 @@ const CertificatesList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const backendUrl = 'http://localhost:5000';
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const fetchCertificates = async () => {
     try {
