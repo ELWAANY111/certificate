@@ -1,5 +1,16 @@
-[phases.build]
-cmds = ["npm install", "npm run build"]
+[phases.setup]
+nixPkgs = ['nodejs_18']
 
-[phases.start]
-cmds = ["npx serve -s dist"]
+[phases.install]
+cmds = [
+  'cd client && npm install',
+  'cd server && npm install'
+]
+
+[phases.build]
+cmds = [
+  'cd client && npm run build'
+]
+
+[start]
+cmd = "node server/server.js"
