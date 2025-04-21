@@ -321,14 +321,6 @@ app.use("/uploads", express.static(uploadsDir, {
   }
 }));
 
-// 9. Serve React frontend (must come after API routes)
-const clientBuildPath = path.join(__dirname, "../client/dist");
-if (fs.existsSync(clientBuildPath)) {
-  app.use(express.static(clientBuildPath));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(clientBuildPath, "index.html"));
-  });
-}
 
 // 10. Error handling middleware
 app.use((err, req, res, next) => {
