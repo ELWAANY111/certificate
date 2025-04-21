@@ -1,4 +1,4 @@
-import styles from './CertificatePage.module.css'; // Changed import
+import styles from './CertificatePage.module.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
@@ -48,7 +48,7 @@ const CertificatePage = () => {
       case 'حفر الباطن':
         return '/شعار_أمانة_محافظة_حفر_الباطن.png';
       default:
-        return '/';
+        return '/default-logo.png';
     }
   };
 
@@ -108,6 +108,11 @@ const CertificatePage = () => {
       <p>The requested certificate could not be found.</p>
     </div>
   );
+
+  // Construct the image URL like in CertificatesList
+  const certificateImageUrl = certificate.image 
+    ? `${backendUrl}${certificate.image.startsWith('/') ? '' : '/'}${certificate.image}`
+    : '/placeholder-certificate.jpg';
 
   return (
     <div className={styles.cert}>
@@ -178,19 +183,17 @@ const CertificatePage = () => {
           </div>
 
           <div className={styles['right-column']}>
-            {certificate.imageUrl && (
-              <div className={styles['image-wrapper']}>
-                <img 
-                  src={certificate.imageUrl} 
-                  alt="Certificate" 
-                  className={styles['certificate-image']}
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-              </div>
-            )}
-            
+            <div className={styles['image-wrapper']}>
+              <img 
+                src={certificateImageUrl}
+                alt="Certificate" 
+                className={styles['certificate-image']}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/placeholder-certificate.jpg';
+                }}
+              />
+            </div>
             <div className={styles['qr-wrapper']}>
               {qrCode && (
                 <a
@@ -206,12 +209,12 @@ const CertificatePage = () => {
         </div>
         
         <footer>
-          <img src='/rzftbayb.i3r.png'/>
+          <img src='/rzftbayb.i3r.png' alt="Footer"/>
         </footer>
       </div>
      
       <div className={styles['footer-page']}>
-        <img src='/iusau5ib.bna.png' />
+        <img src='/iusau5ib.bna.png' alt="Footer Background"/>
       </div>
     </div>
   );
